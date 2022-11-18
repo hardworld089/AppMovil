@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,7 +21,7 @@ class _HomePageState extends State<HomePage> {
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: Color.fromARGB(255, 136, 200, 252))),
+                    color: Color.fromARGB(255, 8, 80, 139))),
             const SizedBox(
               height: 20,
             ),
@@ -30,8 +29,11 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 FirebaseAuth.instance.signOut();
               },
-              color: Colors.deepPurple[200],
-              child: const Text('Salir'),
+              color: Color.fromARGB(255, 214, 34, 34),
+              child: const Text(
+                'Salir',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),

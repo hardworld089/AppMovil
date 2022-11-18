@@ -2,31 +2,51 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Login extends StatefulWidget {
-  final VoidCallback showRegisterPage;
-  const Login({Key? key, required this.showRegisterPage}) : super(key: key);
+class ResgisterPage extends StatefulWidget {
+  final VoidCallback showLoginPage;
+  const ResgisterPage({
+    Key? key,
+    required this.showLoginPage,
+  }) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<ResgisterPage> createState() => _ResgisterPageState();
 }
 
-class _LoginState extends State<Login> {
-  // controllers
-
+class _ResgisterPageState extends State<ResgisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  Future singIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-  }
+  final _passwordComfirmController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _passwordComfirmController.dispose();
     super.dispose();
+  }
+
+  Future singUp() async {
+    if (passwordConfirmed()) {
+      print('si coinsiden');
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+    } else {
+      print('no coinciden');
+      print(_passwordComfirmController.text.trim());
+      print('pcb');
+      print(_passwordController.text.trim());
+      return _verAlerta();
+    }
+  }
+
+  bool passwordConfirmed() {
+    if (_passwordController != _passwordComfirmController) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -55,14 +75,14 @@ class _LoginState extends State<Login> {
                   height: 35,
                 ),
                 Text(
-                  'Hola De Nuevo!',
+                  'Que gusto que estes aqui!',
                   style:
                       GoogleFonts.bebasNeue(fontSize: 30, color: Colors.white),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Text('Bienvenido a HardWorld',
+                const Text('Registrate ahora con tus datos',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -111,12 +131,34 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(14)),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: _passwordComfirmController,
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: ' Confirmar Contraseña'),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
                   height: 10.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: singIn,
+                    onTap: singUp,
                     child: Container(
                       padding: const EdgeInsets.all(20.0),
                       decoration: BoxDecoration(
@@ -124,7 +166,7 @@ class _LoginState extends State<Login> {
                           borderRadius: BorderRadius.circular(12)),
                       child: const Center(
                           child: Text(
-                        'Ingresar',
+                        'Registrar',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -145,7 +187,7 @@ class _LoginState extends State<Login> {
                         borderRadius: BorderRadius.circular(12)),
                     child: const Center(
                         child: Text(
-                      'Ingresa con Google',
+                      'Google',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -161,15 +203,15 @@ class _LoginState extends State<Login> {
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     const Text(
-                      '¿No eres miembro? - ',
+                      '¿Ya eres miembro? - ',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     GestureDetector(
-                      onTap: widget.showRegisterPage,
+                      onTap: widget.showLoginPage,
                       // ignore: prefer_const_constructors
                       child: Text(
-                        'Registrate ahora!',
+                        'Ingresa aqui!',
                         style: const TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
@@ -182,5 +224,61 @@ class _LoginState extends State<Login> {
             ),
           ),
         )));
+  }
+
+  _verAlerta() {
+    return showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          // ignore: prefer_const_constructors
+          return AlertDialog(
+            title: Center(
+              child: Text(
+                'Error!',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 30,
+                ),
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+
+              // ignore: prefer_const_literals_to_create_immutables
+              children: <Widget>[
+                const SizedBox(
+                  height: 10,
+                ),
+                // ignore: prefer_const_constructors
+                Center(
+                    child: Image.asset(
+                  'assets/alertErr.png',
+                  height: 70,
+                )),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Center(
+                  child: Text('las contraseñas no coinciden!',
+                      style: TextStyle(
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black)),
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text(
+                    'Probar de nuevo',
+                    style: TextStyle(
+                        fontSize: 18, color: Color.fromARGB(255, 4, 103, 216)),
+                  )),
+            ],
+          );
+        });
   }
 }
