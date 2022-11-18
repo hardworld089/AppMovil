@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -21,17 +19,31 @@ class _forgotPasswordState extends State<forgotPassword> {
 
   Future passwordReset() async {
     try {
-      FirebaseAuth.instance
+      await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            title: Text('Correo enviado exitosamente'),
+            content: Text(
+                'Verifica tu correo para restablecer tu contraseña y logeate nuevamente desde el inicio'),
+          );
+        },
+      );
     } on FirebaseAuthException catch (e) {
       print(e);
       showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Text(e.message.toString()),
-            );
-          });
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            title: Text('Error'),
+            content: Text(
+                'El correo no es valido, favor de verificar e intente nuevamente'),
+            /* content: Text(e.message.toString()), */
+          );
+        },
+      );
     }
   }
 
@@ -46,8 +58,8 @@ class _forgotPasswordState extends State<forgotPassword> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25.0),
             child: Text('Ingreta tu correo para contiuar con la recuperación.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -55,7 +67,7 @@ class _forgotPasswordState extends State<forgotPassword> {
                   fontSize: 20,
                 )),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Container(
@@ -81,9 +93,9 @@ class _forgotPasswordState extends State<forgotPassword> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: Padding(
-                padding: EdgeInsets.all(18.0),
+                padding: const EdgeInsets.all(18.0),
                 child: Container(
-                  child: Text('Restablecer contraseña',
+                  child: const Text('Restablecer contraseña',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
