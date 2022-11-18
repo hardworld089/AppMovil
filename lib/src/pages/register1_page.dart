@@ -42,7 +42,8 @@ class _ResgisterPageState extends State<ResgisterPage> {
   }
 
   bool passwordConfirmed() {
-    if (_passwordController != _passwordComfirmController) {
+    if (_passwordController.text.trim() ==
+        _passwordComfirmController.text.trim()) {
       return true;
     } else {
       return false;
