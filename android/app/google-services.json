@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "57959566377",
+    "project_id": "learn-hardworld",
+    "storage_bucket": "learn-hardworld.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57959566377:android:1766db9c8926d882dba038",
+        "android_client_info": {
+          "package_name": "com.example.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57959566377-b3j6efqm48d8b79d5v736u3bn8j83a4e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.login",
+            "certificate_hash": "dff69d07f99537a257b4cc626e3093b86a1c915b"
+          }
+        },
+        {
+          "client_id": "57959566377-vsg9l2kok59g740kjda0qbcbie58b1g2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEqiIJeBv7FAlWLLmZcXSflpQ7nqT1Tow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57959566377-vsg9l2kok59g740kjda0qbcbie58b1g2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
