@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:login/src/Auth/auth_google.dart';
 
 import 'forgot_pw_page.dart';
 
@@ -176,19 +178,26 @@ class _LoginState extends State<Login> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 179, 17, 17),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: const Center(
-                        child: Text(
-                      'Ingresa con Google',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    )),
+                  child: GestureDetector(
+                    onTap: () async {
+                      User? user =
+                          await Authenticator.iniciarSesion(context: context);
+                      print(user?.displayName);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(20.0),
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 179, 17, 17),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: const Center(
+                          child: Text(
+                        'Ingresa con Google',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      )),
+                    ),
                   ),
                 ),
                 const SizedBox(
