@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,28 +18,47 @@ class _ResgisterPageState extends State<ResgisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _passwordComfirmController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _ageConroller = TextEditingController();
+  final _apellidoController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _passwordComfirmController.dispose();
+    _nameController.dispose();
+    _ageConroller.dispose();
+    _apellidoController.dispose();
     super.dispose();
   }
 
   Future singUp() async {
     if (passwordConfirmed()) {
-      print('si coinsiden');
+      //crear usuario
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
+
+      //añadir los dealles del usuario
+      UserAddDetails(
+          _nameController.text.trim(),
+          _apellidoController.text.trim(),
+          _emailController.text.trim(),
+          int.parse(_ageConroller.text.trim()));
     } else {
-      print('no coinciden');
-      print(_passwordComfirmController.text.trim());
-      print('pcb');
-      print(_passwordController.text.trim());
       return _verAlerta();
     }
+  }
+
+  Future UserAddDetails(
+      String name, String apellidoPaterno, String email, int age) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'nombre': name,
+      'apellido_paterno': apellidoPaterno,
+      'email': email,
+      'edad': age
+    });
   }
 
   bool passwordConfirmed() {
@@ -67,13 +87,9 @@ class _ResgisterPageState extends State<ResgisterPage> {
                 Icons.phone_android,
                 size: 100,
               ), */
-                Center(
-                    child: Image.asset(
-                  'assets/Hardworld.png',
-                  height: 150,
-                )),
+
                 const SizedBox(
-                  height: 35,
+                  height: 20,
                 ),
                 Text(
                   'Que gusto que estes aqui!',
@@ -90,6 +106,70 @@ class _ResgisterPageState extends State<ResgisterPage> {
                         color: Color.fromARGB(255, 136, 200, 252))),
                 const SizedBox(
                   height: 50,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(14)),
+                    // ignore: prefer_const_constructors
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: _nameController,
+                        decoration: const InputDecoration(
+                            border: InputBorder.none, hintText: 'Nombre'),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(14)),
+                    // ignore: prefer_const_constructors
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: _apellidoController,
+                        decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Apellido Paterno'),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(14)),
+                    // ignore: prefer_const_constructors
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: _ageConroller,
+                        decoration: const InputDecoration(
+                            border: InputBorder.none, hintText: 'Edad'),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
