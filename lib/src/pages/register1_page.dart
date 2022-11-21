@@ -34,7 +34,7 @@ class _ResgisterPageState extends State<ResgisterPage> {
   }
 
   Future singUp() async {
-    if (passwordConfirmed()) {
+    if (validations() && passwordConfirmed()) {
       //crear usuario
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
@@ -47,7 +47,7 @@ class _ResgisterPageState extends State<ResgisterPage> {
           _emailController.text.trim(),
           int.parse(_ageConroller.text.trim()));
     } else {
-      return _verAlerta();
+      return _tipoAlerta();
     }
   }
 
@@ -67,6 +67,27 @@ class _ResgisterPageState extends State<ResgisterPage> {
       return true;
     } else {
       return false;
+    }
+  }
+
+  bool validations() {
+    if (_ageConroller.text.isEmpty ||
+        _apellidoController.text.isEmpty ||
+        _emailController.text.isEmpty ||
+        _nameController.text.isEmpty ||
+        _passwordComfirmController.text.isEmpty ||
+        _passwordController.text.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  _tipoAlerta() {
+    if (validations() == false) {
+      return _campoVacio();
+    } else if (passwordConfirmed() == false) {
+      return _passNoCoincide();
     }
   }
 
@@ -259,23 +280,6 @@ class _ResgisterPageState extends State<ResgisterPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 179, 17, 17),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: const Center(
-                        child: Text(
-                      'Google',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    )),
-                  ),
-                ),
                 const SizedBox(
                   height: 25,
                 ),
@@ -307,14 +311,14 @@ class _ResgisterPageState extends State<ResgisterPage> {
         )));
   }
 
-  _verAlerta() {
+  _passNoCoincide() {
     return showDialog(
         barrierDismissible: false,
         context: context,
         builder: (context) {
           // ignore: prefer_const_constructors
           return AlertDialog(
-            title: Center(
+            title: const Center(
               child: Text(
                 'Error!',
                 style: TextStyle(
@@ -342,7 +346,65 @@ class _ResgisterPageState extends State<ResgisterPage> {
                   height: 10,
                 ),
                 const Center(
-                  child: Text('las contraseñas no coinciden!',
+                  child: Text(
+                      '¡Las contraseñas no coinciden por favor verífica que sean iguales!',
+                      style: TextStyle(
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black)),
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text(
+                    'Probar de nuevo',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 18, color: Color.fromARGB(255, 4, 103, 216)),
+                  )),
+            ],
+          );
+        });
+  }
+
+  _campoVacio() {
+    return showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          // ignore: prefer_const_constructors
+          return AlertDialog(
+            title: const Center(
+              child: Text(
+                'Error!',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 30,
+                ),
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+
+              // ignore: prefer_const_literals_to_create_immutables
+              children: <Widget>[
+                const SizedBox(
+                  height: 10,
+                ),
+                // ignore: prefer_const_constructors
+                Center(
+                    child: Image.asset(
+                  'assets/alertErr.png',
+                  height: 70,
+                )),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Center(
+                  child: Text('No puedes dejar campos vacios',
                       style: TextStyle(
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,

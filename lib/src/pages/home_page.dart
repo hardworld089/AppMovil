@@ -83,6 +83,21 @@ class _HomePageState extends State<HomePage> {
                         },
                       );
                     })),
+            SizedBox(
+              height: 5,
+            ),
+            Text('MODO PRUEBA - GRACIAS POR REGISTRARTE'),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              'ES TODO POR VER XD PERO NO TE AGUITES PRONTO SALDRA LA VERSION COMPLETA',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.red),
+            ),
+            SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),

@@ -19,9 +19,45 @@ class _LoginState extends State<Login> {
   final _passwordController = TextEditingController();
 
   Future singIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            title: Center(
+                child: Text(
+              'Bienvenido/a',
+              style: TextStyle(color: Colors.blue),
+            )),
+            content: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Esta es una aplicación de aprendizaje, para toda persona interesada en aprender sobre el hardware en computadoras, esperamos sea de mucha ayuda para usted :)',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          );
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text(
+              'Error',
+              style: TextStyle(color: Colors.red),
+            ),
+            content: Text(e.message.toString()),
+          );
+        },
+      );
+    }
   }
 
   @override

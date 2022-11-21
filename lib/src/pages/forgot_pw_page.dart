@@ -37,9 +37,16 @@ class _forgotPasswordState extends State<forgotPassword> {
         context: context,
         builder: (context) {
           return const AlertDialog(
-            title: Text('Error'),
+            title: Center(
+              child: Text(
+                'Error',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
             content: Text(
-                'El correo no es valido, favor de verificar e intente nuevamente'),
+              'El correo no es valido, favor de verificar e intente nuevamente',
+              textAlign: TextAlign.center,
+            ),
             /* content: Text(e.message.toString()), */
           );
         },
