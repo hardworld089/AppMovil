@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
@@ -8,10 +8,10 @@ class UserPage extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser!;
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 41, 39, 39),
+      backgroundColor: const Color.fromARGB(255, 41, 39, 39),
       appBar: AppBar(
         title: const Text('Tu Progreso'),
-        backgroundColor: Color.fromARGB(255, 41, 39, 39),
+        backgroundColor: const Color.fromARGB(255, 41, 39, 39),
       ),
       body: Center(
         child: Padding(

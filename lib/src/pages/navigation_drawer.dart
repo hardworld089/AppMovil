@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/src/pages/User_page.dart';
@@ -51,15 +50,13 @@ builMenuItems(BuildContext context) {
       // ignore: prefer_const_literals_to_create_immutables
       children: [
         ListTile(
-          leading: const Icon(
-            Icons.home_outlined,
-            size: 30,
-            color: Colors.blue,
-          ),
-          title: const Text('Home'),
-          onTap: () => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const HomePage())),
-        ),
+            leading: const Icon(
+              Icons.home_outlined,
+              size: 30,
+              color: Colors.blue,
+            ),
+            title: const Text('Home'),
+            onTap: () => Navigator.pop(context)),
         const ListTile(
           leading: Icon(
             Icons.computer,

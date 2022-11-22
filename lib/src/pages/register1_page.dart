@@ -94,7 +94,7 @@ class _ResgisterPageState extends State<ResgisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 12, 12, 12),
+        backgroundColor: const Color.fromARGB(255, 12, 12, 12),
         body: SafeArea(
             child: Center(
           child: SingleChildScrollView(
