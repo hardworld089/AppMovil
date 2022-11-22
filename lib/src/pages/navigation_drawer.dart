@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/src/pages/User_page.dart';
+import 'package:login/src/pages/hardwere_page.dart';
 import 'package:login/src/pages/home_page.dart';
+
+import 'cuanto_sabes.dart';
 
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({super.key});
@@ -57,14 +60,19 @@ builMenuItems(BuildContext context) {
             ),
             title: const Text('Home'),
             onTap: () => Navigator.pop(context)),
-        const ListTile(
-          leading: Icon(
+        ListTile(
+          leading: const Icon(
             Icons.computer,
             size: 30,
             color: Colors.blue,
           ),
           title: Text('Aprende sobre Hardwere'),
-          /* onTap: () {}, */
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HardwerePage()),
+            );
+          },
         ),
         const ListTile(
           leading: Icon(
@@ -73,16 +81,26 @@ builMenuItems(BuildContext context) {
             color: Colors.blue,
           ),
           title: Text('Aprende sobre software'),
-          /* onTap: () {}, */
+          /* onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CuantoPage()),
+            );
+          }, */
         ),
-        const ListTile(
-          leading: Icon(
+        ListTile(
+          leading: const Icon(
             Icons.analytics,
             size: 30,
             color: Colors.blue,
           ),
-          title: Text('Probar conocimientos'),
-          /* onTap: () {}, */
+          title: const Text('Probar conocimientos'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CuantoPage()),
+            );
+          },
         ),
         const Divider(
           color: Colors.black,
