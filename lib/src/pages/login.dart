@@ -22,9 +22,15 @@ class _LoginState extends State<Login> {
 
   Future singIn() async {
     try {
+      /* showDialog(
+          context: context,
+          builder: (context) {
+            return Center(child: CircularProgressIndicator());
+          }); */
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
+      /* Navigator.of(context).pop(); */
       showDialog(
         context: context,
         builder: (context) {
