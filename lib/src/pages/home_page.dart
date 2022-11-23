@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/src/pages/cuanto_sabes.dart';
 import 'package:login/src/pages/hardwere_page.dart';
+import 'package:login/src/pages/historia_page.dart';
 import 'package:login/src/pages/navigation_drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -56,9 +57,56 @@ class TempHomeScrim extends StatelessWidget {
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               )),
+          cardHistoria(),
         ],
       ),
     ));
+  }
+}
+
+class cardHistoria extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HistoriaPage()),
+        );
+      },
+      child: Card(
+        color: Color.fromARGB(221, 68, 92, 226),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        margin: const EdgeInsets.all(15),
+        elevation: 10,
+        /*         */
+        child: Column(
+          children: <Widget>[
+            // Usamos el widget Image para mostrar una imagen
+            const FadeInImage(
+              // Como queremos traer una imagen desde un url usamos NetworkImage
+              image: NetworkImage(
+                  'https://i.pinimg.com/originals/c9/a4/47/c9a4476e57fc91d5f3e85aa9b6d13646.jpg'),
+              placeholder: NetworkImage(
+                  'https://acegif.com/wp-content/uploads/loading-98.gif'),
+            ),
+
+            // Usamos Container para el contenedor de la descripción
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: const Text(
+                'Ver Historia de las computadoras',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 

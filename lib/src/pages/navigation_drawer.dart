@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login/src/pages/User_page.dart';
 import 'package:login/src/pages/hardwere_page.dart';
+import 'package:login/src/pages/historia_page.dart';
 import 'package:login/src/pages/home_page.dart';
 
 import 'cuanto_sabes.dart';
@@ -99,6 +100,20 @@ builMenuItems(BuildContext context) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const CuantoPage()),
+            );
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.history,
+            size: 30,
+            color: Colors.blue,
+          ),
+          title: const Text('Historia de las computadoras'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HistoriaPage()),
             );
           },
         ),
