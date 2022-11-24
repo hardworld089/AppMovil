@@ -1,4 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:login/screens/alimentacion_page.dart';
+import 'package:login/screens/cd_duro_page.dart';
+import 'package:login/screens/cpu_page.dart';
+import 'package:login/screens/monitor_page.dart';
+import 'package:login/screens/mouse_page.dart';
+import 'package:login/screens/pross_page.dart';
+import 'package:login/screens/ram_page.dart';
+import 'package:login/screens/rom_page.dart';
+import 'package:login/screens/sonido_page.dart';
+import 'package:login/screens/ssd_page.dart';
+import 'package:login/screens/targ_video_page.dart';
+import 'package:login/screens/teclado_page.dart';
 
 class HardwerePage extends StatelessWidget {
   const HardwerePage({super.key});
@@ -83,7 +95,10 @@ class RowElementsUno extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print('cpu');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CpuPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -115,7 +130,10 @@ class RowElementsUno extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('monitor');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MonitorPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -168,7 +186,10 @@ class RowElementsDos extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print('cpu');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MousePage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -200,7 +221,10 @@ class RowElementsDos extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('monitor');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TecladoPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -253,7 +277,10 @@ class RowElementsTres extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print('cpu');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RamPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -285,7 +312,10 @@ class RowElementsTres extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('monitor');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RomPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -338,7 +368,10 @@ class RowElementsCuatro extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print('cpu');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CdDuroPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -370,7 +403,10 @@ class RowElementsCuatro extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('monitor');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SsdPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -423,7 +459,10 @@ class RowElementsCinco extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print('cpu');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AlimPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -455,7 +494,10 @@ class RowElementsCinco extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('monitor');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => VideoPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -508,7 +550,10 @@ class RowElementsSeis extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              print('cpu');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProsesPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),
@@ -540,7 +585,10 @@ class RowElementsSeis extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('monitor');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SonidoPage()),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(10),

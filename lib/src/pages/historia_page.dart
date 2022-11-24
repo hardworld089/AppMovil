@@ -18,7 +18,10 @@ _bodyHistoria() {
   return Scaffold(
     body: SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Column(children: const [Title(), Cards(), botonPruebaHistoria()]),
+      child: Column(children: const [
+        Title(),
+        Cards(), /* botonPruebaHistoria() */
+      ]),
     ),
   );
 }
