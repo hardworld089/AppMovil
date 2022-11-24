@@ -21,7 +21,10 @@ ContainerHardwere() {
       TituloElementos(),
       RowElementsUno(),
       RowElementsDos(),
-      RowElementsTres()
+      RowElementsTres(),
+      RowElementsCuatro(),
+      RowElementsCinco(),
+      RowElementsSeis()
     ]),
   );
 }
@@ -97,13 +100,13 @@ class RowElementsUno extends StatelessWidget {
                 child: Column(
                   children: [
                     Image.network(
-                      'https://www.computerhope.com/jargon/c/cpu.png',
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/cpu.png?raw=true',
                       width: 100,
                     ),
                     const Text('CPU',
                         style: TextStyle(
                             color: Color.fromARGB(255, 248, 248, 248),
-                            fontSize: 25,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold))
                   ],
                 ),
@@ -130,13 +133,13 @@ class RowElementsUno extends StatelessWidget {
                 child: Column(
                   children: [
                     Image.network(
-                      'https://images.vexels.com/media/users/3/127665/isolated/preview/004abf8b7946c4ed5605806fa445c476-monitor-de-escritorio-plano.png',
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/monitor.png?raw=true',
                       width: 100,
                     ),
                     const Text('Monitor',
                         style: TextStyle(
                             color: Color.fromARGB(255, 248, 248, 248),
-                            fontSize: 25,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold))
                   ],
                 ),
@@ -182,13 +185,13 @@ class RowElementsDos extends StatelessWidget {
                 child: Column(
                   children: [
                     Image.network(
-                      'https://cdn-icons-png.flaticon.com/512/6558/6558592.png',
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/mouse.png?raw=true',
                       width: 100,
                     ),
                     const Text('RATON',
                         style: TextStyle(
                             color: Color.fromARGB(255, 248, 248, 248),
-                            fontSize: 25,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold))
                   ],
                 ),
@@ -215,13 +218,13 @@ class RowElementsDos extends StatelessWidget {
                 child: Column(
                   children: [
                     Image.network(
-                      'https://images.vexels.com/media/users/3/127665/isolated/preview/004abf8b7946c4ed5605806fa445c476-monitor-de-escritorio-plano.png',
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/teclado.png?raw=true',
                       width: 100,
                     ),
                     const Text('TECLADO',
                         style: TextStyle(
                             color: Color.fromARGB(255, 248, 248, 248),
-                            fontSize: 25,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold))
                   ],
                 ),
@@ -267,13 +270,13 @@ class RowElementsTres extends StatelessWidget {
                 child: Column(
                   children: [
                     Image.network(
-                      'https://cdn-icons-png.flaticon.com/512/689/689328.png?w=360',
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/ram.png?raw=true',
                       width: 100,
                     ),
                     const Text('RAM',
                         style: TextStyle(
                             color: Color.fromARGB(255, 248, 248, 248),
-                            fontSize: 25,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold))
                   ],
                 ),
@@ -300,13 +303,268 @@ class RowElementsTres extends StatelessWidget {
                 child: Column(
                   children: [
                     Image.network(
-                      'https://cdn.pixabay.com/photo/2012/04/12/13/47/rom-30098_640.png',
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/rom.png?raw=true',
                       width: 100,
                     ),
                     const Text('ROM',
                         style: TextStyle(
                             color: Color.fromARGB(255, 248, 248, 248),
-                            fontSize: 25,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold))
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RowElementsCuatro extends StatelessWidget {
+  const RowElementsCuatro({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              print('cpu');
+            },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.blue, // Color of the container
+                  borderRadius:
+                      BorderRadius.circular(20.0), // Radius of the border
+                  border: Border.all(
+                    width: 2.0,
+                    color: Color.fromARGB(255, 0, 0, 0), // Color of the border
+                  )),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image.network(
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/disco_duro.png?raw=true',
+                      width: 100,
+                    ),
+                    const Text('Cd. Duro',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 248, 248, 248),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold))
+                  ],
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              print('monitor');
+            },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.blue, // Color of the container
+                  borderRadius:
+                      BorderRadius.circular(20.0), // Radius of the border
+                  border: Border.all(
+                    width: 2.0,
+                    color:
+                        Color.fromARGB(255, 10, 10, 10), // Color of the border
+                  )),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image.network(
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/ssd.jpg?raw=true',
+                      width: 100,
+                    ),
+                    const Text('Cd. Solido',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 248, 248, 248),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold))
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RowElementsCinco extends StatelessWidget {
+  const RowElementsCinco({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              print('cpu');
+            },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.blue, // Color of the container
+                  borderRadius:
+                      BorderRadius.circular(20.0), // Radius of the border
+                  border: Border.all(
+                    width: 2.0,
+                    color: Color.fromARGB(255, 0, 0, 0), // Color of the border
+                  )),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image.network(
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/alimentacion.png?raw=true',
+                      width: 100,
+                    ),
+                    const Text('Alimentacion',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 248, 248, 248),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold))
+                  ],
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              print('monitor');
+            },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.blue, // Color of the container
+                  borderRadius:
+                      BorderRadius.circular(20.0), // Radius of the border
+                  border: Border.all(
+                    width: 2.0,
+                    color:
+                        Color.fromARGB(255, 10, 10, 10), // Color of the border
+                  )),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image.network(
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/video.jpg?raw=true',
+                      width: 100,
+                    ),
+                    const Text('T. Video',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 248, 248, 248),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold))
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RowElementsSeis extends StatelessWidget {
+  const RowElementsSeis({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              print('cpu');
+            },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.blue, // Color of the container
+                  borderRadius:
+                      BorderRadius.circular(20.0), // Radius of the border
+                  border: Border.all(
+                    width: 2.0,
+                    color: Color.fromARGB(255, 0, 0, 0), // Color of the border
+                  )),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image.network(
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/Procesador.png?raw=true',
+                      width: 100,
+                    ),
+                    const Text('Procesador',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 248, 248, 248),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold))
+                  ],
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              print('monitor');
+            },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.blue, // Color of the container
+                  borderRadius:
+                      BorderRadius.circular(20.0), // Radius of the border
+                  border: Border.all(
+                    width: 2.0,
+                    color:
+                        Color.fromARGB(255, 10, 10, 10), // Color of the border
+                  )),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Image.network(
+                      'https://github.com/Benjamin98100/ImagenesBenja/blob/main/imgLearnHardworld/sonido.jpg?raw=true',
+                      width: 100,
+                    ),
+                    const Text('T. Sonido',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 248, 248, 248),
+                            fontSize: 18,
                             fontWeight: FontWeight.bold))
                   ],
                 ),
