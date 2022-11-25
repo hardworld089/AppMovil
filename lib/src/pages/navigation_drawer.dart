@@ -75,7 +75,7 @@ builMenuItems(BuildContext context) {
             );
           },
         ),
-        const ListTile(
+        /* const ListTile(
           leading: Icon(
             Icons.amp_stories,
             size: 30,
@@ -88,7 +88,7 @@ builMenuItems(BuildContext context) {
               MaterialPageRoute(builder: (context) => const CuantoPage()),
             );
           }, */
-        ),
+        ), */
         ListTile(
           leading: const Icon(
             Icons.analytics,

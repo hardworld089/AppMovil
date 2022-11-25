@@ -11,6 +11,7 @@ import 'package:login/screens/sonido_page.dart';
 import 'package:login/screens/ssd_page.dart';
 import 'package:login/screens/targ_video_page.dart';
 import 'package:login/screens/teclado_page.dart';
+import 'package:login/src/pages/quizz_screen.dart';
 
 class HardwerePage extends StatelessWidget {
   const HardwerePage({super.key});
@@ -36,9 +37,29 @@ ContainerHardwere() {
       RowElementsTres(),
       RowElementsCuatro(),
       RowElementsCinco(),
-      RowElementsSeis()
+      RowElementsSeis(),
+      boton(),
     ]),
   );
+}
+
+class boton extends StatelessWidget {
+  const boton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: const Text("Probar tu conocimiento"),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => QuizScreen()),
+        );
+      },
+    );
+  }
 }
 
 class HeroElementHard extends StatelessWidget {
